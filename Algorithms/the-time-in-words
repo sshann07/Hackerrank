@@ -1,0 +1,302 @@
+using System.CodeDom.Compiler;
+using System.Collections.Generic;
+using System.Collections;
+using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Runtime.Serialization;
+using System.Text.RegularExpressions;
+using System.Text;
+using System;
+
+class Solution {
+
+    // Complete the timeInWords function below.
+    static string timeInWords(int h, int m) {
+        String minutes = "";
+        String hour = "";
+        int calculated_minutes = 0;
+        String timeinwords = "";
+        if(m>30 && m<60)
+        {
+            calculated_minutes = 60-m;
+            h=h+1;
+        }
+        else
+        {
+            calculated_minutes = m;
+        }
+        switch (calculated_minutes)  
+    {  
+  
+        case 1:  
+            minutes = "one";  
+            break;  
+        case 2:  
+            minutes = "two";  
+            break;  
+        case 3:  
+            minutes = "three";  
+            break;  
+        case 4:  
+            minutes = "four";  
+            break;  
+        case 5:  
+            minutes = "five";  
+            break;  
+        case 6:  
+            minutes = "six";  
+            break;  
+        case 7:  
+            minutes = "seven";  
+            break;  
+        case 8:  
+            minutes = "eight";  
+            break;  
+        case 9:  
+            minutes = "nine";  
+            break;  
+        case 10:  
+            minutes = "ten";  
+            break;  
+        case 11:  
+            minutes = "eleven";  
+            break;  
+        case 12:  
+            minutes = "twelve";  
+            break;
+        case 13:  
+            minutes = "thirteen";  
+            break;  
+        case 14:  
+            minutes = "fourteen";  
+            break;  
+        case 15:  
+            minutes = "fifteen";  
+            break;  
+        case 16:  
+            minutes = "sixteen";  
+            break;  
+        case 17:  
+            minutes = "seventeen";  
+            break;  
+        case 18:  
+            minutes = "eighteen";  
+            break;  
+        case 19:  
+            minutes = "nineteen";  
+            break;  
+        case 20:  
+            minutes = "twenty";  
+            break;
+        case 21:  
+            minutes = "twenty one";  
+            break;  
+        case 22:  
+            minutes = "twenty two";  
+            break;  
+        case 23:  
+            minutes = "twenty three";  
+            break;  
+        case 24:  
+            minutes = "twenty four";  
+            break;  
+        case 25:  
+            minutes = "twenty five";  
+            break;  
+        case 26:  
+            minutes = "twenty six";  
+            break;  
+        case 27:  
+            minutes = "twenty seven";  
+            break;  
+        case 28:  
+            minutes = "twenty eight";  
+            break;  
+        case 29:  
+            minutes = "twenty nine";  
+            break;    
+        case 30:  
+            minutes = "thirty";  
+            break;
+        case 31:  
+            minutes = "thirty one";  
+            break;  
+        case 32:  
+            minutes = "thirty two";  
+            break;  
+        case 33:  
+            minutes = "thirty three";  
+            break;  
+        case 34:  
+            minutes = "thirty four";  
+            break;  
+        case 35:  
+            minutes = "thirty five";  
+            break;  
+        case 36:  
+            minutes = "thirty six";  
+            break;  
+        case 37:  
+            minutes = "thirty seven";  
+            break;  
+        case 38:  
+            minutes = "thirty eight";  
+            break;  
+        case 39:  
+            minutes = "thirty nine";  
+            break;  
+        case 40:  
+            minutes = "fourty";  
+            break;
+        case 41:  
+            minutes = "fourty one";  
+            break;  
+        case 42:  
+            minutes = "fourty two";  
+            break;  
+        case 43:  
+            minutes = "fourty three";  
+            break;  
+        case 44:  
+            minutes = "fourty four";  
+            break;  
+        case 45:  
+            minutes = "fourty five";  
+            break;  
+        case 46:  
+            minutes = "fourty fix";  
+            break;  
+        case 47:  
+            minutes = "fourty seven";  
+            break;  
+        case 48:  
+            minutes = "fourty eight";  
+            break;  
+        case 49:  
+            minutes = "fourty nine";  
+            break;  
+        case 50:  
+            minutes = "fifty";  
+            break; 
+        case 51:  
+            minutes = "fifty one";  
+            break;  
+        case 52:  
+            minutes = "fifty two";  
+            break;  
+        case 53:  
+            minutes = "fifty three";  
+            break;  
+        case 54:  
+            minutes = "fifty four";  
+            break;  
+        case 55:  
+            minutes = "fifty five";  
+            break;  
+        case 56:  
+            minutes = "fifty six";  
+            break;  
+        case 57:  
+            minutes = "fifty seven";  
+            break;  
+        case 58:  
+            minutes = "fifty eight";  
+            break;  
+        case 59:  
+            minutes = "fifty nine";  
+            break; 
+        default:
+            break;
+    }   
+     switch (h)  
+    {  
+        case 1:  
+            hour = "one";  
+            break;  
+        case 2:  
+            hour = "two";  
+            break;  
+        case 3:  
+            hour = "three";  
+            break;  
+        case 4:  
+            hour = "four";  
+            break;  
+        case 5:  
+            hour = "five";  
+            break;  
+        case 6:  
+            hour = "six";  
+            break;  
+        case 7:  
+            hour = "seven";  
+            break;  
+        case 8:  
+            hour = "eight";  
+            break;  
+        case 9:  
+            hour = "nine";  
+            break;  
+        case 10:  
+            hour = "ten";  
+            break;  
+        case 11:  
+            hour = "eleven";  
+            break;  
+        case 12:  
+            hour = "twelve";  
+            break;
+        default:
+            break;
+    }
+        if(m==0)
+        {
+            timeinwords = hour + " o' clock";
+        }
+        else if( m>=1 && m<=30)
+        {
+            if(m==15)
+            {
+                timeinwords = "quarter past " + hour;
+            }
+            else if(m==30)
+            {
+                timeinwords = "half past " + hour;
+            }
+            else
+            {
+                if(m==1)
+                timeinwords = minutes + " minute past " + hour;
+                else
+                timeinwords = minutes + " minutes past " + hour;
+            }
+        }
+        else if(m>30 && m<60)
+        {
+            if(m==45)
+            timeinwords = "quarter to " + hour;
+            else
+            timeinwords = minutes + " minutes to " + hour;
+        }
+        return timeinwords;
+    }
+
+    static void Main(string[] args) {
+        TextWriter textWriter = new StreamWriter(@System.Environment.GetEnvironmentVariable("OUTPUT_PATH"), true);
+
+        int h = Convert.ToInt32(Console.ReadLine());
+
+        int m = Convert.ToInt32(Console.ReadLine());
+
+        string result = timeInWords(h, m);
+
+        textWriter.WriteLine(result);
+
+        textWriter.Flush();
+        textWriter.Close();
+    }
+}
